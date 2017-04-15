@@ -8,7 +8,7 @@
 Vagrant.configure("2") do |config|
   config.vm.define "node", primary:true do|node|
   	node.vm.box = "ubuntu/trusty32"
-  	node.vm.network "forwarded_port", guest:8080, host:7777, host_ip:"127.0.0.1"
+  	node.vm.network "private_network", ip:"10.10.10.1"
   	node.omnibus.chef_version = :latest
   	node.vm.provision :chef_client do |chef|
   		chef.provisioning_path = "/etc/chef"
